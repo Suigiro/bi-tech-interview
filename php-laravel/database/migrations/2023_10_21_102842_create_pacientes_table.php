@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('cpf');
             $table->string('rg');
             $table->string('sexo');
-            $table->string('data_nasc');
+            $table->date('data_nasc');
             $table->string('email')->nullable();
             $table->string('celular');
             $table->longText('descricao')->nullable();

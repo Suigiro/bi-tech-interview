@@ -9,9 +9,17 @@ import '@/config/msgs'
 import '@/config/axios'
 import '@/config/mq'
 import '@/plugins/vue-select'
+import moment from 'moment'
 import VueMask from 'v-mask'
 
 Vue.config.productionTip = false
+
+Vue.filter('formatDate', function (value) {
+  if (value) {
+    return moment(String(value)).format('MM/DD/YYYY')
+  }
+})
+
 Vue.use(VueMask)
 
 new Vue({

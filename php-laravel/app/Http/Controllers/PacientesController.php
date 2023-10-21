@@ -4,8 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Http\Resources\PacienteResource;
 use App\Models\Pacientes;
-
 use Illuminate\Http\Request;
+use Validator;
+
 
 class PacientesController extends BaseApiController
 {
@@ -107,11 +108,23 @@ class PacientesController extends BaseApiController
     {
         try {
             $paciente = Pacientes::find($id);
-            $pacente->delete();
+            $paciente->delete();
 
             return $this->sendResponse([], 'Paciente excluido com sucesso');
         } catch (Exception $e) {
             return $this->sendError('Erro ao excluir paciente', $e);
         }
+    }
+
+    public function totalPacientes(){
+        try {
+
+            $total = Pacientes::count();
+            return $this->sendResponse($total, 'Total de Registros');
+
+       } catch (Exception $e) {
+            return $this->sendError('Erro ao carregar itens', $e);
+       }
+
     }
 }

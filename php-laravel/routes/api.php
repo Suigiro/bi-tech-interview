@@ -22,6 +22,7 @@ Route::controller(RegisterController::class)->group(function(){
 });
 
 Route::controller(PacientesController::class)->group(function(){
+    Route::get('/total', 'totalPacientes');
     Route::get('/pacientes', 'index');
     Route::get('/paciente/{id}', 'show');
     Route::post('/paciente', 'create');

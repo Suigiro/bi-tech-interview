@@ -1,12 +1,14 @@
 <template>
-    <div class="loading">
+    <div class="loading" v-if="isLoading">
         <b-spinner label="Spinning"></b-spinner>
     </div>
 </template>
 
 <script>
+import { mapState } from 'vuex'
 export default {
-  name: 'Loading'
+  name: 'Loading',
+  computed: mapState(['isLoading'])
 }
 </script>
 
@@ -16,5 +18,7 @@ export default {
     display: flex;
     justify-content: center;
     align-items: center;
+    background: rgba(0,0,0,0.7);
+    z-index: 9999;
 }
 </style>

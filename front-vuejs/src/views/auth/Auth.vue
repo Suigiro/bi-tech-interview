@@ -26,10 +26,12 @@ export default {
   },
   methods: {
     async signin () {
+      this.$store.commit('setLoading', true)
       await axios.post(`${baseApiUrl}/login`, this.auth)
         .then(res => {
           this.$store.commit('setUsuario', res.data)
           localStorage.setItem(userKey, JSON.stringify(res.data))
+          this.$store.commit('setLoading', false)
           this.$router.push({ name: 'home' })
           showSuccess('Solicitação realizada com sucesso', res.status)
         }).catch(function (error) {

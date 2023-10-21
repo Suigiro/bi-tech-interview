@@ -6,8 +6,10 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
+    isLoading: false,
     isMenuVisible: false,
     usuario: null,
+    pacientes: null,
     isConfigVisible: false,
     isAdmin: false
   },
@@ -34,11 +36,23 @@ export default new Vuex.Store({
         state.isMenuVisible = false
       }
     },
+    setLoading (state, isLoading) {
+      state.isLoading = isLoading
+    },
+    setPacientes (state, pacientes) {
+      state.pacientes = pacientes
+    },
     setIsMenuVisible (state, status) {
       state.isMenuVisible = status
     },
     setIsConfigVisible (state, status) {
       state.isConfigVisible = status
+    },
+    getPacientes (state) {
+      return state.pacientes
+    },
+    getPacienteById (state, id) {
+      return state.pacientes.find(paciente => paciente.id === id)
     }
   }
 })

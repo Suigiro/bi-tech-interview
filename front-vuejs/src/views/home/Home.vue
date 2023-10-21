@@ -12,26 +12,30 @@
 import PageTitle from '@/components/template/PageTitle'
 import Numeros from '@/components/dashboard/Numeros'
 import axios from 'axios'
-import { baseApiUrl } from '@/config/global'
+import { baseApiUrl, showError } from '@/config/global'
 import { mapState } from 'vuex'
 
 export default {
   name: 'Home',
   components: { PageTitle, Numeros },
-  computed: mapState(['isMenuVisible', 'isConfigVisible', 'usuario']),
+  computed: mapState(['isMenuVisible', 'isConfigVisible', 'isLoading', 'usuario']),
   data () {
     return {
       pacientes: 0
     }
   },
   methods: {
-    getNumeros () {
-      axios.get(`${baseApiUrl}/pacientes`).then(res => {
-        this.pacientes = res.data.lenght
+    async getNumeros () {
+      await axios.get(`${baseApiUrl}/total`).then(res => {
+        this.pacientes = res.data.data
+      }).catch(function (error) {
+        showError(error)
       })
+      this.$store.commit('setLoading', false)
     }
   },
   mounted () {
+    this.$store.commit('setLoading', true)
     this.getNumeros()
   }
 }

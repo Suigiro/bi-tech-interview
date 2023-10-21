@@ -5,6 +5,7 @@ import AdminPages from '@/views/admin/AdminPages'
 import Configuracao from '@/views/admin/Configuracao'
 import Home from '@/views/home/Home'
 import Paciente from '@/views/home/Paciente'
+import FormPaciente from '@/views/home/FormPaciente'
 import { userKey } from '@/config/global'
 Vue.use(VueRouter)
 
@@ -29,6 +30,11 @@ const routes = [{
   name: 'configuracao',
   path: '/configuracao',
   component: Configuracao,
+  props: true
+}, {
+  name: 'formPaciente',
+  path: '/formPaciente/:id',
+  component: FormPaciente,
   props: true
 }]
 

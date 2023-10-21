@@ -6,6 +6,7 @@
     <Menu v-if="usuario"/>
     <Content />
     <Footer />
+    <Loading />
   </div>
 </template>
 
@@ -16,11 +17,12 @@ import Menu from '@/components/template/Menu'
 import Content from '@/components/template/Content'
 import Footer from '@/components/template/Footer'
 import { userKey } from '@/config/global'
+import Loading from '@/components/template/Loading'
 
 export default {
   name: 'App',
-  components: { Header, Menu, Content, Footer },
-  computed: mapState(['isMenuVisible', 'isConfigVisible', 'usuario']),
+  components: { Header, Menu, Content, Footer, Loading },
+  computed: mapState(['isMenuVisible', 'isConfigVisible', 'usuario', 'isLoading']),
   data () {
     return {
       validatingToken: true
