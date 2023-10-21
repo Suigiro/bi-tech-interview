@@ -12,3 +12,5 @@ Alterar a BaseUrl para o endereço da aplicação no arquivo global.js dentro da
 rodar o comando npm run build ou yarn build
 
 colocar a pasta dist no servidor de frontend
+
+Caso seja em desevolimento usar o comando npm run serve ou yarn serve
