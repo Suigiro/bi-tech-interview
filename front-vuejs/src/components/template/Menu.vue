@@ -39,7 +39,7 @@ export default {
         path: '/pacientes',
         hidden: false,
         children: [],
-        icon: 'fa fa-ticket'
+        icon: 'fa fa-users'
       }]
     },
     onCheck () {
@@ -54,7 +54,7 @@ export default {
 <style>
 .menu {
     grid-area: menu;
-    background: linear-gradient(to right, #232526, #414345);
+    background: linear-gradient(to right, #0c1d59, #305bf2);
     padding-left: 25px;
     display: flex;
     flex-direction: column;
@@ -62,9 +62,10 @@ export default {
 }
 
 .menu a,
-.menu a:hover
+.menu a:hover,
+.menu a:active
 {
-  color: #fff;
+  color: #fff !important;
   text-decoration: none;
 }
 
