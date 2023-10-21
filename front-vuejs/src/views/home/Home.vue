@@ -21,8 +21,8 @@ export default {
   computed: mapState(['isMenuVisible', 'isConfigVisible', 'usuario']),
   data () {
     return {
-        pacientes: 0
-      }
+      pacientes: 0
+    }
   },
   methods: {
     getNumeros () {

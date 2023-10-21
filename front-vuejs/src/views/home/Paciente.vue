@@ -233,8 +233,6 @@ export default {
         this.rows_aguardando = res.data.length
         this.pageAguardandoOptions[3].value = res.data.length
       }).catch(showError)
-
-
     },
     async fetch () {
       const url = `${baseApiUrl}/atendimento/aguardando`
@@ -272,7 +270,7 @@ export default {
     onFilteredPaciente (paciente) {
       this.rows_paciente = paciente.length
       this.currentPage_paciente = 1
-    },
+    }
   },
   mounted () {
     this.loadAtendimentos()

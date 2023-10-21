@@ -1,5 +1,5 @@
 <template>
-  <footer class="footer">Copyright <strong>UnionData - UDash</strong> &#0169; 2021 - 2021</footer>
+  <footer class="footer">Copyright &nbsp;<strong>Saude Paciente</strong> &#0169; 2023 - 2023</footer>
 </template>
 
 <script>

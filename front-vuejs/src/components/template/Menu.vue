@@ -34,44 +34,12 @@ export default {
         icon: 'fa fa-home'
       }, {
         id: 2,
-        name: 'Atendimento',
+        name: 'Pacientes',
         parentId: null,
-        path: '/atendimento',
+        path: '/pacientes',
         hidden: false,
         children: [],
         icon: 'fa fa-ticket'
-      }, {
-        id: 3,
-        name: 'Administrativo',
-        parentId: null,
-        path: '/admin',
-        hidden: this.isAdmin,
-        children: [],
-        icon: 'fa fa-cogs'
-      }, {
-        id: 4,
-        name: 'Gráficos',
-        parentId: null,
-        path: '/graficos',
-        hidden: false,
-        children: [],
-        icon: 'fa fa-bar-chart'
-      }, {
-        id: 5,
-        name: 'Sla',
-        parentId: null,
-        path: '/sla',
-        hidden: true,
-        children: [],
-        icon: ''
-      }, {
-        id: 6,
-        name: 'Versoes',
-        parentId: null,
-        path: '/versoes',
-        hidden: this.isAdmin,
-        children: [],
-        icon: 'fa fa-code-fork'
       }]
     },
     onCheck () {

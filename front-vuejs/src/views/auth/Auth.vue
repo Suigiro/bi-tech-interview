@@ -4,8 +4,8 @@
             <img src="@/assets/image/union_fullsize_distr.png" alt="Logo" class="logo" />
             <hr />
             <div class="auth-title">Login</div>
-            <input v-model="usuario.emai" name="email" type="email" placeholder="E-mail" />
-            <input v-model="usuario.senha" name="senha" type="password" placeholder="Senha" />
+            <input v-model="auth.email" name="email" type="email" placeholder="E-mail" />
+            <input v-model="auth.password" name="password" type="password" placeholder="Password" />
             <button @click="signin">Login</button>
         </div>
     </div>
@@ -21,12 +21,12 @@ export default {
   computed: mapState(['isMenuVisible']),
   data: function () {
     return {
-      usuario: {}
+      auth: {}
     }
   },
   methods: {
     async signin () {
-      await axios.post(`${baseApiUrl}/auth/login`, this.usuario)
+      await axios.post(`${baseApiUrl}/login`, this.auth)
         .then(res => {
           this.$store.commit('setUsuario', res.data)
           localStorage.setItem(userKey, JSON.stringify(res.data))

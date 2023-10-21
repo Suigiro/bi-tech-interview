@@ -1,6 +1,6 @@
 <template>
   <div id="app" :class="{'hide-menu': !isMenuVisible || !usuario}">
-    <Header title="UDash - Sistema de Chamados"
+    <Header title="Saude Pacientes"
     :hideToggle="!usuario"
     :hideConfig="!usuario" />
     <Menu v-if="usuario"/>
@@ -15,8 +15,7 @@ import Header from '@/components/template/Header'
 import Menu from '@/components/template/Menu'
 import Content from '@/components/template/Content'
 import Footer from '@/components/template/Footer'
-import axios from 'axios'
-import { baseApiUrl, userKey } from '@/config/global'
+import { userKey } from '@/config/global'
 
 export default {
   name: 'App',
@@ -33,8 +32,8 @@ export default {
 
       const json = localStorage.getItem(userKey)
       const usuarioData = JSON.parse(json)
-      this.$store.commit('setUsuario', null)
-      this.$store.commit('setIsMenuVisible', false)
+      this.$store.commit('setUsuario', usuarioData)
+      this.$store.commit('setIsMenuVisible', true)
 
       if (!usuarioData) {
         this.validatingToken = false
@@ -42,22 +41,7 @@ export default {
         this.$router.push({ name: 'auth' })
         return
       }
-      axios.defaults.headers.common.Authorization = `Bearer ${usuarioData.token}`
-      const res = await axios.post(`${baseApiUrl}/auth/validateToken`)
-      if (res.data.usuario) {
-        localStorage.setItem(userKey, JSON.stringify(res.data.usuario))
-        this.$store.commit('setUsuario', res.data.usuario)
-        this.$store.commit('setIsMenuVisible', true)
-        this.$store.commit('setIsConfigVisible', true)
-        if (this.$mq === 'xs' || this.$mq === 'sm') {
-          this.$store.commit('toggleMenu', false)
-        }
-      } else {
-        localStorage.removeItem(userKey)
-        this.$store.commit('setIsMenuVisible', false)
-        this.$store.commit('setIsConfigVisible', false)
-        this.$router.push({ name: 'auth' })
-      }
+
       this.validatingToken = false
     }
   },
